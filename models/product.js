@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const productSchema = new mongoose.Schema({
     name :{
-        type : Number,
+        type : String,
         required :[true,'product name must be provide' ]
     },
     price:{
@@ -25,6 +25,9 @@ const productSchema = new mongoose.Schema({
         type : String,
         enum:{
             values: ['ikea', 'liddy', 'caressa', 'marcos']
-        }
+        },
+        message : '{VALUE} is not supported',
     }
 })
+
+module.exports = mongoose.model('Products', productSchema)
